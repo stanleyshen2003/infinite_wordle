@@ -1,0 +1,630 @@
+float[][] squaresPos = new float[30][2];
+int[][] keyboardPos = new int[28][2]; //enter:26, backspace:27
+int[][] squareWords = new int[30][2]; //undone:0, correct:1, half correct:2, wrong:3
+int[] status = {1,0,0,0,0,0};					//not done:0, writing:1, flipping:2, done:3
+char[] keyWords = {'Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'};
+int squareSize = 75;
+int[] keywordMove = {-2,-5,-1,-2,-1,-2,-2,2,-2,-1,-1,-2,-2,0,-2,-2,0,-1,0,0,-2,-2,-1,0,-2,-3};
+int[] squareWordMove = {-4,-8,-2,-3,-2,-2,-3,6,-4,-1,-2,-2,-2,0,-4,-2,0,-1,0,0,-2,-3,-1,0,-2,-5};
+int keySize = 60;
+int timer=0;
+char[][] words = {{'f','l','u','i','d'},{'r','e','u','s','e'},{'f','o','r','u','m'},{'a','p','p','l','e'},{'c','h','o','s','e'},{'r','e','s','e','t'},{'s','h','a','r','d'},{'a','b','i','d','e'},{'a','b','o','u','t'},{'a','b','o','v','e'},{'a','c','t','o','r'},{'a','c','u','t','e'},{'a','d','a','p','t'},{'a','d','m','i','t'},{'a','d','o','p','t'},{'a','d','u','l','t'},{'a','f','t','e','r'},{'a','g','a','i','n'},{'a','g','e','n','t'},{'a','g','i','n','g'},{'a','g','o','n','y'},{'a','h','e','a','d'},{'a','i','s','l','e'},{'a','l','a','r','m'},{'a','l','b','u','m'},{'a','l','e','r','t'},{'a','l','i','e','n'},{'a','l','i','k','e'},{'a','l','i','v','e'},{'a','l','l','e','y'},{'a','l','l','o','t'},{'a','l','l','o','w'},{'a','l','o','n','e'},{'a','l','o','n','g'},{'a','l','o','u','d'},{'a','m','e','n','d'},{'a','m','o','n','g'},{'a','n','g','e','l'},{'a','n','g','e','r'},{'a','n','g','l','e'},{'a','n','g','r','y'},{'a','n','k','l','e'},{'a','p','a','r','t'},{'a','p','p','a','l'},{'a','p','p','l','y'},{'a','p','r','o','n'},{'a','r','e','n','a'},{'a','r','i','s','e'},{'a','r','m','e','d'},{'a','r','r','a','y'},{'a','r','r','o','w'},{'a','s','i','d','e'},{'a','s','s','e','t'},{'a','t','t','i','c'},{'a','u','d','i','o'},{'a','v','o','i','d'},{'a','w','a','i','t'},{'a','w','a','k','e'},{'a','w','a','r','d'},{'a','w','f','u','l'},{'b','a','c','o','n'},{'b','a','s','e','d'},{'b','a','s','i','c'},{'b','a','s','i','n'},{'b','a','t','h','e'},{'b','e','a','c','h'},{'b','e','a','r','d'},{'b','e','a','s','t'},{'b','e','g','i','n'},{'b','e','i','n','g'},{'b','e','l','l','y'},{'b','e','l','o','w'},{'b','e','n','c','h'},{'b','e','r','r','y'},{'b','i','n','g','o'},{'b','i','r','t','h'},{'b','l','a','c','k'},{'b','l','a','m','e'},{'b','l','a','n','d'},{'b','l','a','n','k'},{'b','l','a','s','t'},{'b','l','a','z','e'},{'b','l','e','a','k'},{'b','l','e','e','d'},{'b','l','e','n','d'},{'b','l','e','s','s'},{'b','l','i','n','d'},{'b','l','i','n','k'},{'b','l','o','c','k'},{'b','l','o','o','d'},{'b','l','o','o','m'},{'b','l','u','e','s'},{'b','l','u','f','f'},{'b','l','u','s','h'},{'b','o','a','r','d'},{'b','o','a','r','d'},{'b','o','a','s','t'},{'b','o','n','u','s'},{'b','o','o','s','t'},{'b','o','o','t','h'},{'b','o','r','e','d'},{'b','o','u','n','d'},{'b','r','a','c','e'},{'b','r','a','i','n'},{'b','r','a','k','e'},{'b','r','a','n','d'},{'b','r','a','v','e'},{'b','r','e','a','d'},{'b','r','e','a','k'},{'b','r','e','e','d'},{'b','r','i','c','k'},{'b','r','i','d','e'},{'b','r','i','e','f'},{'b','r','i','n','g'},{'b','r','i','s','k'},{'b','r','o','a','d'},{'b','r','o','o','d'},{'b','r','o','o','k'},{'b','r','o','w','n'},{'b','r','u','s','h'},{'b','u','i','l','d'},{'b','u','l','l','y'},{'b','u','n','c','h'},{'b','u','r','s','t'},{'c','a','b','i','n'},{'c','a','b','l','e'},{'c','a','m','e','l'},{'c','a','n','a','l'},{'c','a','n','d','y'},{'c','a','r','g','o'},{'c','a','r','r','y'},{'c','a','r','v','e'},{'c','a','s','t','e'},{'c','a','t','c','h'},{'c','a','t','e','r'},{'c','a','u','s','e'},{'c','e','a','s','e'},{'c','h','a','i','n'},{'c','h','a','i','r'},{'c','h','a','l','k'},{'c','h','a','o','s'},{'c','h','a','r','m'},{'c','h','a','r','t'},{'c','h','a','s','e'},{'c','h','e','a','p'},{'c','h','e','a','t'},{'c','h','e','c','k'},{'c','h','e','e','k'},{'c','h','e','e','r'},{'c','h','e','s','s'},{'c','h','e','s','t'},{'c','h','i','c','k'},{'c','h','i','e','f'},{'c','h','i','l','d'},{'c','h','i','l','l'},{'c','h','i','n','a'},{'c','h','o','i','r'},{'c','h','o','k','e'},{'c','h','u','n','k'},{'c','i','g','a','r'},{'c','l','a','i','m'},{'c','l','a','s','h'},{'c','l','a','s','s'},{'c','l','e','a','n'},{'c','l','e','a','r'},{'c','l','e','r','k'},{'c','l','i','c','k'},{'c','l','i','f','f'},{'c','l','i','m','b'},{'c','l','o','c','k'},{'c','l','o','s','e'},{'c','l','o','s','e'},{'c','l','o','t','h'},{'c','l','o','u','d'},{'c','l','o','w','n'},{'c','o','a','c','h'},{'c','o','a','s','t'},{'c','o','l','o','r'},{'c','o','m','e','r'},{'c','o','m','e','t'},{'c','o','m','i','c'},{'c','o','u','c','h'},{'c','o','u','g','h'},{'c','o','u','n','t'},{'c','o','u','r','t'},{'c','o','v','e','r'},{'c','r','a','c','k'},{'c','r','a','f','t'},{'c','r','a','n','e'},{'c','r','a','s','h'},{'c','r','a','w','l'},{'c','r','a','z','y'},{'c','r','e','a','m'},{'c','r','e','e','d'},{'c','r','e','e','p'},{'c','r','i','m','e'},{'c','r','o','s','s'},{'c','r','o','w','d'},{'c','r','o','w','n'},{'c','r','u','d','e'},{'c','r','u','e','l'},{'c','r','u','s','h'},{'c','u','b','i','c'},{'c','u','r','r','y'},{'c','u','r','v','e'},{'c','y','c','l','e'},{'d','a','i','l','y'},{'d','a','i','r','y'},{'d','a','n','c','e'},{'d','e','b','u','t'},{'d','e','l','a','y'},{'d','e','m','o','n'},{'d','e','n','s','e'},{'d','e','p','t','h'},{'d','e','t','e','r'},{'d','e','v','i','l'},{'d','i','a','r','y'},{'d','i','r','t','y'},{'d','i','s','c','o'},{'d','i','t','c','h'},{'d','i','z','z','y'},{'d','o','d','g','e'},{'d','o','n','o','r'},{'d','o','u','b','t'},{'d','o','u','g','h'},{'d','o','z','e','n'},{'d','r','a','f','t'},{'d','r','a','i','n'},{'d','r','a','m','a'},{'d','r','a','p','e'},{'d','r','e','a','d'},{'d','r','e','a','m'},{'d','r','e','s','s'},{'d','r','i','f','t'},{'d','r','i','l','l'},{'d','r','i','n','k'},{'d','r','i','v','e'},{'d','r','o','w','n'},{'d','r','u','n','k'},{'d','r','y','e','r'},{'d','w','a','r','f'},{'e','a','g','e','r'},{'e','a','g','l','e'},{'e','a','r','l','y'},{'e','a','r','t','h'},{'e','i','g','h','t'},{'e','l','b','o','w'},{'e','l','d','e','r'},{'e','l','e','c','t'},{'e','l','i','t','e'},{'e','m','p','t','y'},{'e','n','e','m','y'},{'e','n','s','u','e'},{'e','n','t','e','r'},{'e','n','t','r','y'},{'e','q','u','a','l'},{'e','r','a','s','e'},{'e','r','o','d','e'},{'e','r','r','o','r'},{'e','s','s','a','y'},{'e','t','h','i','c'},{'e','v','e','n','t'},{'e','v','e','r','y'},{'e','v','o','k','e'},{'e','x','a','c','t'},{'e','x','c','e','l'},{'e','x','i','l','e'},{'e','x','i','s','t'},{'e','x','p','e','l'},{'e','x','t','r','a'},{'f','a','b','l','e'},{'f','a','i','n','t'},{'f','a','i','r','y'},{'f','a','i','t','h'},{'f','a','n','c','y'},{'f','a','t','a','l'},{'f','a','u','l','t'},{'f','a','v','o','r'},{'f','e','n','c','e'},{'f','e','r','r','y'},{'f','e','v','e','r'},{'f','i','e','l','d'},{'f','i','f','t','h'},{'f','i','f','t','y'},{'f','i','g','h','t'},{'f','i','n','a','l'},{'f','i','r','s','t'},{'f','l','a','m','e'},{'f','l','a','s','h'},{'f','l','e','s','h'},{'f','l','o','a','t'},{'f','l','o','c','k'},{'f','l','o','o','d'},{'f','l','o','o','r'},{'f','l','o','u','r'},{'f','o','c','u','s'},{'f','o','g','g','y'},{'f','o','r','c','e'},{'f','o','r','g','e'},{'f','o','r','t','h'},{'f','o','r','t','y'},{'f','o','u','n','d'},{'f','r','a','m','e'},{'f','r','a','n','k'},{'f','r','e','s','h'},{'f','r','o','n','t'},{'f','r','o','s','t'},{'f','r','o','w','n'},{'f','r','u','i','t'},{'f','u','g','h','t'},{'f','u','n','n','y'},{'g','a','u','g','e'},{'g','h','o','s','t'},{'g','i','a','n','t'},{'g','l','a','r','e'},{'g','l','a','s','s'},{'g','l','e','a','m'},{'g','l','i','d','e'},{'g','l','o','b','e'},{'g','l','o','r','y'},{'g','o','o','d','s'},{'g','o','o','s','e'},{'g','r','a','c','e'},{'g','r','a','d','e'},{'g','r','a','i','n'},{'g','r','a','n','d'},{'g','r','a','p','e'},{'g','r','a','s','p'},{'g','r','a','s','s'},{'g','r','a','t','e'},{'g','r','a','v','e'},{'g','r','a','v','e'},{'g','r','e','a','t'},{'g','r','e','e','d'},{'g','r','e','e','n'},{'g','r','e','e','t'},{'g','r','i','e','f'},{'g','r','i','l','l'},{'g','r','i','n','d'},{'g','r','o','a','n'},{'g','r','o','o','m'},{'g','r','o','u','p'},{'g','r','o','v','e'},{'g','u','a','r','d'},{'g','u','e','s','s'},{'g','u','e','s','t'},{'g','u','i','l','t'},{'g','y','p','s','y'},{'h','a','b','i','t'},{'h','a','n','d','y'},{'h','a','p','p','y'},{'h','a','r','d','y'},{'h','a','r','s','h'},{'h','a','s','t','y'},{'h','a','t','c','h'},{'h','e','a','r','t'},{'h','e','a','v','y'},{'h','e','d','g','e'},{'h','o','b','b','y'},{'h','o','n','e','y'},{'h','o','n','o','r'},{'h','o','r','s','e'},{'h','o','t','e','l'},{'h','o','t','e','l'},{'h','o','u','s','e'},{'h','o','u','s','e'},{'h','u','m','a','n'},{'h','u','m','a','n'},{'h','u','m','i','d'},{'h','u','m','i','d'},{'h','u','m','o','r'},{'h','u','m','o','r'},{'h','u','r','r','y'},{'h','u','r','r','y'},{'i','d','e','a','l'},{'i','d','i','o','m'},{'i','d','i','o','t'},{'i','m','a','g','e'},{'i','m','p','l','y'},{'i','n','c','u','r'},{'i','n','f','e','r'},{'i','n','n','e','r'},{'i','n','p','u','t'},{'i','r','o','n','y'},{'i','v','o','r','y'},{'j','e','a','n','s'},{'j','e','l','l','y'},{'j','e','w','e','l'},{'j','u','i','c','e'},{'k','n','e','e','l'},{'k','n','i','f','e'},{'k','n','o','c','k'},{'l','a','b','e','l'},{'l','a','b','o','r'},{'l','a','r','g','e'},{'l','a','s','e','r'},{'l','a','u','g','h'},{'l','e','a','r','n'},{'l','e','a','s','e'},{'l','e','a','v','e'},{'l','e','g','a','l'},{'l','e','m','o','n'},{'l','e','v','e','l'},{'l','i','g','h','t'},{'l','i','m','i','t'},{'l','i','n','e','n'},{'l','i','v','e','r'},{'l','o','b','b','y'},{'l','o','c','a','l'},{'l','o','g','i','c'},{'l','o','o','s','e'},{'l','o','r','r','y'},{'l','o','s','e','r'},{'l','o','t','u','s'},{'l','o','u','s','y'},{'l','o','v','e','r'},{'l','o','w','e','r'},{'l','o','y','a','l'},{'l','u','c','k','y'},{'l','u','n','a','r'},{'l','u','n','c','h'},{'l','y','r','i','c'},{'m','a','d','a','m'},{'m','a','g','i','c'},{'m','a','j','o','r'},{'m','a','r','c','h'},{'m','a','r','r','y'},{'m','a','t','c','h'},{'m','a','y','b','e'},{'m','a','y','o','r'},{'m','e','a','n','s'},{'m','e','d','a','l'},{'m','e','d','i','a'},{'m','e','l','o','n'},{'m','e','r','c','y'},{'m','e','r','i','t'},{'m','e','r','r','y'},{'m','e','t','a','l'},{'m','e','t','e','r'},{'m','i','n','e','r'},{'m','i','n','o','r'},{'m','i','n','u','s'},{'m','o','d','e','l'},{'m','o','d','e','m'},{'m','o','i','s','t'},{'m','o','n','e','y'},{'m','o','n','t','h'},{'m','o','r','a','l'},{'m','o','t','e','l'},{'m','o','t','i','f'},{'m','o','t','o','r'},{'m','o','t','t','o'},{'m','o','u','r','n'},{'m','o','u','s','e'},{'m','o','u','t','h'},{'m','o','v','i','e'},{'m','u','d','d','y'},{'m','u','s','i','c'},{'n','a','i','v','e'},{'n','a','k','e','d'},{'n','e','e','d','y'},{'n','e','r','v','e'},{'n','e','v','e','r'},{'n','i','e','c','e'},{'n','i','g','h','t'},{'n','o','b','l','e'},{'n','o','i','s','e'},{'n','o','i','s','y'},{'n','o','r','t','h'},{'n','o','v','e','l'},{'n','o','v','e','l'},{'n','u','r','s','e'},{'o','a','s','i','s'},{'o','c','c','u','r'},{'o','c','e','a','n'},{'o','f','f','e','r'},{'o','f','t','e','n'},{'o','n','s','e','t'},{'o','t','h','e','r'},{'o','w','n','e','r'},{'p','a','i','n','t'},{'p','a','n','d','a'},{'p','a','n','e','l'},{'p','a','n','i','c'},{'p','a','n','t','s'},{'p','a','p','e','r'},{'p','a','r','t','y'},{'p','a','s','t','e'},{'p','a','u','s','e'},{'p','e','a','c','e'},{'p','e','a','c','h'},{'p','e','a','r','l'},{'p','e','d','a','l'},{'p','e','n','i','s'},{'p','e','n','n','y'},{'p','e','r','c','h'},{'p','e','r','i','l'},{'p','e','t','t','y'},{'p','h','o','n','e'},{'p','i','a','n','o'},{'p','i','e','c','e'},{'p','i','e','t','y'},{'p','i','l','o','t'},{'p','i','o','u','s'},{'p','i','t','c','h'},{'p','i','z','z','a'},{'p','l','a','c','e'},{'p','l','a','i','n'},{'p','l','a','n','e'},{'p','l','a','n','t'},{'p','l','a','t','e'},{'p','o','i','n','t'},{'p','o','u','n','d'},{'p','o','u','n','d'},{'p','o','w','e','r'},{'p','r','e','s','s'},{'p','r','i','c','e'},{'p','r','i','d','e'},{'p','r','i','m','e'},{'p','r','i','n','t'},{'p','r','i','z','e'},{'p','r','o','b','e'},{'p','r','o','n','e'},{'p','r','o','o','f'},{'p','r','o','s','e'},{'p','r','o','u','d'},{'p','r','o','v','e'},{'p','r','u','n','e'},{'p','s','a','l','m'},{'p','u','l','s','e'},{'p','u','p','i','l'},{'p','u','r','s','e'},{'q','u','a','k','e'},{'q','u','e','e','n'},{'q','u','e','e','r'},{'q','u','e','s','t'},{'q','u','e','u','e'},{'q','u','i','c','k'},{'q','u','i','e','t'},{'q','u','i','t','e'},{'q','u','o','t','e'},{'r','a','d','a','r'},{'r','a','d','i','o'},{'r','a','i','n','y'},{'r','a','i','s','e'},{'r','a','l','l','y'},{'r','a','n','g','e'},{'r','a','p','i','d'},{'r','a','z','o','r'},{'r','e','a','c','h'},{'r','e','a','c','t'},{'r','e','a','d','y'},{'r','e','b','e','l'},{'r','e','b','e','l'},{'r','e','f','e','r'},{'r','e','i','g','n'},{'r','e','l','a','x'},{'r','e','n','e','w'},{'r','e','p','a','y'},{'r','e','p','e','l'},{'r','e','p','l','y'},{'r','i','g','h','t'},{'r','i','v','a','l'},{'r','i','v','e','r'},{'r','o','a','c','h'},{'r','o','a','s','t'},{'r','o','b','i','n'},{'r','o','b','o','t'},{'r','o','u','g','h'},{'r','o','u','n','d'},{'r','o','u','t','e'},{'r','o','y','a','l'},{'r','u','l','e','r'},{'r','u','m','o','r'},{'r','u','s','t','y'},{'s','a','l','a','d'},{'s','a','u','c','e'},{'s','c','a','r','e'},{'s','c','a','r','f'},{'s','c','a','r','y'},{'s','c','e','n','e'},{'s','c','o','l','d'},{'s','c','o','r','e'},{'s','c','o','r','n'},{'s','c','o','u','t'},{'s','c','r','a','p'},{'s','e','i','z','e'},{'s','e','n','s','e'},{'s','e','r','u','m'},{'s','e','r','v','e'},{'s','e','v','e','n'},{'s','e','v','e','r'},{'s','e','w','e','r'},{'s','h','a','d','e'},{'s','h','a','d','y'},{'s','h','a','f','t'},{'s','h','a','k','e'},{'s','h','a','m','e'},{'s','h','a','p','e'},{'s','h','a','r','e'},{'s','h','a','r','p'},{'s','h','a','v','e'},{'s','h','e','a','r'},{'s','h','e','e','p'},{'s','h','e','e','p'},{'s','h','e','e','r'},{'s','h','e','l','f'},{'s','h','e','l','l'},{'s','h','i','f','t'},{'s','h','i','n','e'},{'s','h','i','n','y'},{'s','h','i','r','t'},{'s','h','o','c','k'},{'s','h','o','o','t'},{'s','h','o','r','e'},{'s','h','o','r','t'},{'s','h','o','u','t'},{'s','i','g','h','t'},{'s','i','l','l','y'},{'s','i','n','c','e'},{'s','i','x','t','y'},{'s','k','a','t','e'},{'s','k','i','l','l'},{'s','k','i','r','t'},{'s','l','a','s','h'},{'s','l','a','v','e'},{'s','l','e','e','p'},{'s','l','i','c','e'},{'s','l','i','d','e'},{'s','l','o','p','e'},{'s','m','a','l','l'},{'s','m','a','r','t'},{'s','m','e','l','l'},{'s','m','i','l','e'},{'s','m','o','k','e'},{'s','n','a','c','k'},{'s','n','a','i','l'},{'s','n','a','k','e'},{'s','n','e','a','k'},{'s','n','o','w','y'},{'s','o','b','e','r'},{'s','o','l','a','r'},{'s','o','l','i','d'},{'s','o','l','v','e'},{'s','o','r','r','y'},{'s','o','u','n','d'},{'s','o','u','n','d'},{'s','o','u','t','h'},{'s','p','a','c','e'},{'s','p','a','d','e'},{'s','p','a','r','e'},{'s','p','e','a','k'},{'s','p','e','e','d'},{'s','p','e','l','l'},{'s','p','e','n','d'},{'s','p','e','r','m'},{'s','p','i','c','e'},{'s','p','i','l','l'},{'s','p','i','t','e'},{'s','p','l','i','t'},{'s','p','o','i','l'},{'s','p','o','o','n'},{'s','p','o','r','t'},{'s','p','r','a','y'},{'s','q','u','a','d'},{'s','t','a','c','k'},{'s','t','a','g','e'},{'s','t','a','i','r'},{'s','t','a','l','e'},{'s','t','a','l','l'},{'s','t','a','m','p'},{'s','t','a','n','d'},{'s','t','a','r','e'},{'s','t','a','r','t'},{'s','t','a','t','e'},{'s','t','a','t','e'},{'s','t','e','a','k'},{'s','t','e','a','l'},{'s','t','e','a','m'},{'s','t','e','e','l'},{'s','t','e','e','p'},{'s','t','e','e','r'},{'s','t','i','c','k'},{'s','t','i','f','f'},{'s','t','i','l','l'},{'s','t','i','n','g'},{'s','t','o','n','e'},{'s','t','o','o','l'},{'s','t','o','o','p'},{'s','t','o','r','e'},{'s','t','o','r','m'},{'s','t','o','r','y'},{'s','t','o','v','e'},{'s','t','r','a','w'},{'s','t','u','d','y'},{'s','t','u','f','f'},{'s','t','u','f','f'},{'s','t','y','l','e'},{'s','u','g','a','r'},{'s','u','n','n','y'},{'s','u','p','e','r'},{'s','u','r','g','e'},{'s','w','e','a','r'},{'s','w','e','a','t'},{'s','w','e','e','p'},{'s','w','e','e','t'},{'s','w','i','f','t'},{'s','w','i','n','g'},{'s','w','o','r','d'},{'t','a','b','l','e'},{'t','a','b','o','o'},{'t','a','l','l','y'},{'t','a','s','t','e'},{'t','a','s','t','y'},{'t','e','a','c','h'},{'t','e','m','p','t'},{'t','e','n','s','e'},{'t','h','a','n','k'},{'t','h','e','f','t'},{'t','h','e','m','e'},{'t','h','e','r','e'},{'t','h','e','s','e'},{'t','h','i','c','k'},{'t','h','i','e','f'},{'t','h','i','g','h'},{'t','h','i','n','g'},{'t','h','i','n','k'},{'t','h','i','r','d'},{'t','h','o','s','e'},{'t','h','r','e','e'},{'t','h','r','o','w'},{'t','h','u','m','b'},{'t','i','g','e','r'},{'t','i','g','h','t'},{'t','i','m','i','d'},{'t','i','r','e','d'},{'t','i','t','l','e'},{'t','o','a','s','t'},{'t','o','d','a','y'},{'t','o','k','e','n'},{'t','o','o','t','h'},{'t','o','p','i','c'},{'t','o','t','a','l'},{'t','o','u','c','h'},{'t','o','u','g','h'},{'t','o','w','e','l'},{'t','o','w','e','r'},{'t','o','x','i','c'},{'t','r','a','c','e'},{'t','r','a','c','k'},{'t','r','a','d','e'},{'t','r','a','i','n'},{'t','r','a','i','n'},{'t','r','e','a','t'},{'t','r','e','n','d'},{'t','r','i','a','l'},{'t','r','i','b','e'},{'t','r','i','c','k'},{'t','r','o','o','p'},{'t','r','u','c','k'},{'t','r','u','n','k'},{'t','r','u','s','t'},{'t','r','u','t','h'},{'t','u','m','o','r'},{'t','u','t','o','r'},{'t','w','i','c','e'},{'t','w','i','s','t'},{'u','l','c','e','r'},{'u','n','c','l','e'},{'u','n','d','e','r'},{'u','n','d','u','e'},{'u','n','i','f','y'},{'u','n','i','o','n'},{'u','n','i','t','e'},{'u','n','i','t','y'},{'u','n','t','i','l'},{'u','p','e','n','d'},{'u','p','p','e','r'},{'u','p','s','e','t'},{'u','r','b','a','n'},{'u','s','a','g','e'},{'u','s','h','e','r'},{'u','s','u','a','l'},{'v','a','l','u','e'},{'v','a','p','o','r'},{'v','e','r','s','e'},{'v','i','d','e','o'},{'v','i','l','l','a'},{'v','i','r','u','s'},{'v','i','s','i','t'},{'v','i','t','a','l'},{'v','i','v','i','d'},{'v','o','c','a','l'},{'v','o','g','u','e'},{'v','o','i','c','e'},{'v','o','m','i','t'},{'v','o','t','e','r'},{'v','o','w','e','l'},{'w','a','g','o','n'},{'w','a','i','s','t'},{'w','a','k','e','n'},{'w','a','s','t','e'},{'w','a','t','c','h'},{'w','a','t','c','h'},{'w','a','t','e','r'},{'w','e','a','r','y'},{'w','e','a','v','e'},{'w','e','i','g','h'},{'w','h','a','l','e'},{'w','h','e','a','t'},{'w','h','e','e','l'},{'w','h','e','r','e'},{'w','h','i','c','h'},{'w','h','i','l','e'},{'w','h','i','t','e'},{'w','h','o','l','e'},{'w','h','o','s','e'},{'w','i','d','e','n'},{'w','i','d','t','h'},{'w','i','n','d','y'},{'w','i','t','c','h'},{'w','o','m','a','n'},{'w','o','r','l','d'},{'w','o','r','r','y'},{'w','o','r','s','e'},{'w','o','r','t','h'},{'w','o','u','n','d'},{'w','r','i','s','t'},{'w','r','i','t','e'},{'w','r','o','n','g'},{'y','a','c','h','t'},{'y','e','a','r','n'},{'y','e','a','s','t'},{'y','i','e','l','d'},{'y','o','u','t','h'},{'z','e','b','r','a'}};
+PImage deleted, instruction, anotherWord, cross, rank;
+int chooseWord = 1;
+int shakeLetter = -1;
+int notEnoughTimer = 90;
+int notInDictTimer = 90;
+int answer=0;
+float[] middlex = new float[5];
+float[] speed = new float[5];
+char[] tempRealAnswer = {"0","0","0","0","0"};
+char[] guessAnswer = {'0','0','0','0','0'};
+char[] keywordSmall = {'q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'};
+int[] wordStatus = new int[26];  	//not done:0, correct:1, half correct:2, wrong:3
+int[] board = {0,0,0,0,0,0,0};
+int resetShake = 0;
+int enterTimer = 0;
+int showInstruction = 0;
+int resultable = 1;
+int boardOpen = 0;
+void setup(){
+  fullScreen();
+	size(width,900);
+  setAll();
+	deleted = loadImage("https://stanleyshen2003.neocities.org/delete.png");
+	instruction = loadImage("https://stanleyshen2003.neocities.org/instructions.png");
+	anotherWord = loadImage("https://stanleyshen2003.neocities.org/newGame.png")
+	cross = loadImage("https://stanleyshen2003.neocities.org/cross.png");
+	rank = loadImage("https://stanleyshen2003.neocities.org/rank.png");
+}
+
+void draw(){ 
+  background(255);
+	randomWord();
+	if(showInstruction==0){
+		drawWordle();
+	}
+	drawSquares();
+	flip();
+	drawKeys();
+	if(notTheRightAnswer()==1 && outOfGuess()==0 && showInstruction==0){
+		inputKey();
+		notEnoughShake();
+		notInDictShake();
+	}
+	else{
+		showAns();
+		drawBoard();
+		showBoard();
+		drawNewGame();
+	}
+	colorKey();
+	drawInstruction();
+}
+
+int keyToInt(char i){
+	for(int q=0;q<keywordSmall.length;q++){
+		if(i==keywordSmall[q]){
+			return q; 
+		}
+	}
+}
+
+void drawBoard(){
+	if(mouseX>=width/2-175 && mouseX<=width/2-120 && mouseY>=425 && mouseY<=480){
+		image (rank,width/2-118-59,423,59,59);
+		if(mousePressed){
+			boardOpen = 1;
+		}
+	}
+	else{
+		image(rank,width/2-175,425,55,55);
+	}
+}
+
+void showBoard(){
+	if(boardOpen==1){
+		fill(213, 246, 203);
+		rect(width/2-200,300,400,200,20);
+		fill(41, 86, 81);
+		textSize(20)
+		text("1",width/2-170,330+3);
+		text("2",width/2-170,355+3);
+		text("3",width/2-170,380+3);
+		text("4",width/2-170,405+3);
+		text("5",width/2-170,430+3);
+		text("6",width/2-170,455+3);
+		text("X",width/2-172,480+3);
+		for(int i=0;i<7;i++){
+			if(board[i]==0){
+				fill(41, 86, 81);
+				rect(width/2-170+30,333-17+25*i,20,20);
+				textSize(15);
+				fill(255);
+				text("0",width/2-170+36,332+25*i);
+			}
+			else{
+				int maxi = 0;
+				for(int q=0;q<7;q++){
+					if(board[q]>maxi){
+						maxi = board[q];
+					}
+				}
+				fill(51, 216, 14);
+				rect(width/2-170+30,333-17+25*i,int(20+220*board[i]/maxi),20);
+				fill(255);
+				textSize(15);
+				text(board[i],width/2-170+16+int(20+220*board[i]/maxi),332+25*i);
+			}
+		}
+	}
+}
+
+void showAns(){
+	fill(213, 246, 203);
+	rect(width/2-200,300,400,200,20);
+	fill(41, 86, 81);
+	textSize(30);
+	if(outOfGuess()==1){
+		text("don't give up !",width/2-100,360);
+	}
+	else{
+		text("congratulations",width/2-100,360);
+	}
+	text("the answer is",width/2-90,410);
+	text(str(words[answer][0])+str(words[answer][1])+str(words[answer][2])+str(words[answer][3])+str(words[answer][4]),width/2-37,460);
+}
+
+void setAll(){
+	for(int i=0;i<30;i++){
+    squaresPos[i][1] = int(i/5)*(squareSize+10)+90;
+    squaresPos[i][0] = (i%5)*(squareSize+10)+width/2-squareSize/2-2*(squareSize+10);
+    squareWords[i][0] = -1;
+		squareWords[i][1] = 0;
+    if(i<10){
+      keyboardPos[i][1] = 615;
+      keyboardPos[i][0] = width/2+5-(keySize+10)*(5-i);
+    }
+		else if(i<19){
+			keyboardPos[i][1] = 710;
+			keyboardPos[i][0] = width/2-keySize/2-(keySize+10)*(4-i+10);
+		}
+		else if(i<28){
+			keyboardPos[i][1] = 805;
+			if(i<26){
+				keyboardPos[i][0] = keyboardPos[i-8][0];
+				wordStatus[i] = 0;
+			}
+		}
+  }
+	keyboardPos[26][0] = keyboardPos[0][0];
+	keyboardPos[27][0] = keyboardPos[18][0];
+	status = {1,0,0,0,0,0};
+	timer=0;
+	tempRealAnswer = {"0","0","0","0","0"};
+	wordStatus = new int[26];
+	boardOpen = 0;
+	resultable = 1;
+}
+
+int outOfGuess(){
+	if(status[5]==3){
+		for(int i=25;i<30;i++){
+			if(squareWords[i][2]!=1){
+				if(resultable==1){
+					board[6] += 1;
+					resultable = 0;
+				}
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+void drawInstruction(){
+	if(showInstruction==1){
+		image(instruction,width/2+5-(keySize+10)*(5),30);
+		if(mouseX>=width/2+308 && mouseX<=width/2+330 && mouseY>=40 && mouseY<=62){
+			image(cross,width/2+308,39,24,24);
+			if(mousePressed){
+				showInstruction = 0;
+			}
+		}
+		
+	}
+	else{
+		if((mouseX-width/2+310)*(mouseX-width/2+310) + (mouseY-45)*(mouseY-45) <=225){
+			fill(0);
+			ellipse(width/2-310,45,30,30);
+			
+			textSize(20);
+			fill(255);
+			text("?",width/2-316,52);
+			if(mousePressed){
+				showInstruction = 1;
+			}
+		}
+		else{
+			stroke(100);
+			noFill();
+			ellipse(width/2-310,45,30,30);
+			ellipse(width/2-310,45,29,29);
+			textSize(20);
+			fill(0);
+			text("?",width/2-316,52);
+		}
+	}
+}
+
+int notTheRightAnswer(){
+	int correct;
+	for(int i=0;i<6;i++){
+		correct = 0;
+		if(status[i]==3){
+			correct = 1;
+			for(int q=i*5;q<i*5+5;q++){
+				if(squareWords[q][1]!=1){
+					correct = 0;
+				}
+			}
+			if(correct==1){
+				if(resultable){
+					board[i] += 1;
+					resultable = 0;
+				}
+				break;
+			}
+		}
+	}
+	return 1-correct;
+}
+
+void drawNewGame(){
+	if(mouseX>=width/2+120 && mouseX<=width/2+175 && mouseY>=425 && mouseY<=480){
+		image (anotherWord,width/2+118,423,59,59);
+		if(mousePressed){
+			setAll();
+			chooseWord=1;
+			resultable=1;
+		}
+	}
+	else{
+		image(anotherWord,width/2+120,425,55,55);
+	}
+}
+
+void drawWordle(){
+	textSize(45);
+	fill(0);
+	text("WORDLE",width/2-95,60);
+	stroke(200);
+	line(width/2-350,77,width/2+350,77);
+}
+
+void randomWord(){
+	if(chooseWord==1){
+		answer = int(random(0,words.length));
+		chooseWord = 0;
+	}
+}
+
+void notInDictShake(){
+	if(notInDictTimer<45){
+		fill(0);
+		rect(width/2-450+320,120,260,60,20);
+		fill(255);
+		textSize(22);
+		text("Not in word list",width/2-450+380,158);
+	}
+	shake(shakeLetter);
+	notInDictTimer += 1;
+	if(notInDictTimer==45){
+		shakeLetter = -1;
+	}
+}
+
+int[] flipTimer = {0,0,0,0,0};
+int[] flipBack = {0,0,0,0,0};
+float[] midY = {90+37.5,175+37.5,260+37.5,345+37.5,430+37.5,515+37.5};
+
+void flip(){
+	for(int q=0;q<6;q++){
+		if(status[q]==2){
+			for(int i=q*5;i<q*5+5;i++){
+				if(flipTimer[i-q*5]<30){
+					textSize(40);
+					fill(0);
+					text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+					noFill();
+      		stroke(50);
+					rect(squaresPos[i][0],squaresPos[i][1],75,abs(midY[q]-squaresPos[i][1])*2);
+					rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,abs(midY[q]-squaresPos[i][1])*2-2);
+				}
+				if(squaresPos[i][1]-midY[q]<=0 && flipBack[i-q*5]==0 && flipTimer[i-q*5]>30){
+					squaresPos[i][1]+=3;
+					noFill();
+      		stroke(50);
+					rect(squaresPos[i][0],squaresPos[i][1],75,abs(midY[q]-squaresPos[i][1])*2);
+					rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,abs(midY[q]-squaresPos[i][1])*2-2);
+					if(squaresPos[i][1]-midY[q]>0 && flipBack[i-q*5]==0){
+						flipBack[i-q*5]=1;
+					}
+				}
+				
+				if(squaresPos[i][1]-midY[q]+37.5>0 && flipBack[i-q*5]==1){
+					squaresPos[i][1]-=3;
+					rect(squaresPos[i][0],squaresPos[i][1],75,abs(midY[q]-squaresPos[i][1])*2);
+					rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,abs(midY[q]-squaresPos[i][1])*2-2);
+				}
+				if(flipBack[i-q*5]==1 && squaresPos[i][1]==midY[q]-37.5){
+					noStroke();
+					if(squareWords[i][1]==1){
+						fill(106,170,100);
+						rect(squaresPos[i][0],squaresPos[i][1],75,75);
+						textSize(40);
+						fill(255);
+						text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+					}
+					else if(squareWords[i][1]==2){
+						fill(201,180,88);
+						rect(squaresPos[i][0],squaresPos[i][1],75,75);
+						textSize(40);
+						fill(255);
+						text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+					}
+					else{
+						fill(120,124,126);
+						rect(squaresPos[i][0],squaresPos[i][1],75,75);
+						textSize(40);
+						fill(255);
+						text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+					}
+				}
+				else if(flipBack[i-q*5]==1){
+					noStroke();
+					if(squareWords[i][1]==1){
+						fill(106,170,100);
+						rect(squaresPos[i][0],squaresPos[i][1],75,abs(midY[q]-squaresPos[i][1])*2);
+					}
+					else if(squareWords[i][1]==2){
+						fill(201,180,88);
+						rect(squaresPos[i][0],squaresPos[i][1],75,abs(midY[q]-squaresPos[i][1])*2);
+					}
+					else{
+						fill(120,124,126);
+						rect(squaresPos[i][0],squaresPos[i][1],75,abs(midY[q]-squaresPos[i][1])*2);
+					}
+				}
+			}
+			flipTimer[0]+=1;
+			for(int i=0;i<4;i++){
+				if(flipTimer[i]>30){
+					flipTimer[i+1]+=1;
+				}
+			}
+			if(flipTimer[4]>70){
+				status[q] = 3;
+			}
+		}
+		
+	}
+}
+
+void drawSquares(){
+	for(int i=0;i<30;i++){
+    if(squareWords[i][0]==-1){																						//未輸入
+      noFill();
+      stroke(210);
+      rect(squaresPos[i][0],squaresPos[i][1],squareSize,squareSize);
+			rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,squareSize-2);
+    }
+		else if(status[int(i/5)]!=3 && status[int(i/5)]!=2){									//輸入中
+			noFill();
+			stroke(50);
+			rect(squaresPos[i][0],squaresPos[i][1],squareSize,squareSize);
+			rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,squareSize-2);
+			textSize(40);
+			fill(0);
+			text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+		}
+		else if(status[int(i/5)]==3){
+			noStroke();
+			if(squareWords[i][1]==1){
+				fill(106,170,100);
+				rect(squaresPos[i][0],squaresPos[i][1],squareSize,squareSize);
+				rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,squareSize-2);
+				textSize(40);
+				fill(255);
+				text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+			}
+			else if(squareWords[i][1]==2){
+				fill(201,180,88);
+				rect(squaresPos[i][0],squaresPos[i][1],squareSize,squareSize);
+				rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,squareSize-2);
+				textSize(40);
+				fill(255);
+				text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+			}
+			else{
+				fill(120,124,126);
+				rect(squaresPos[i][0],squaresPos[i][1],squareSize,squareSize);
+				rect(squaresPos[i][0]+1,squaresPos[i][1]+1,squareSize-2,squareSize-2);
+				textSize(40);
+				fill(255);
+				text(keyWords[squareWords[i][0]],squaresPos[i][0]+squareWordMove[squareWords[i][0]]+27,squaresPos[i][1]+squareSize/2+17);
+			}
+		}
+  }
+}
+
+void colorKey(){
+	for(int i=0;i<6;i++){
+		if(status[i]==3){
+			for(int q=i*5;q<i*5+5;q++){
+				if(squareWords[q][1]==1){
+					wordStatus[squareWords[q][0]] = 1;
+				}
+				if(wordStatus[squareWords[q][0]]==0){
+					wordStatus[squareWords[q][0]] = squareWords[q][1];
+				}
+			}
+		}
+	}
+}
+
+void drawKeys(){
+  for(int i=0;i<30;i++){
+		if(i<26){
+			if(wordStatus[i]==0){
+				fill(210);
+				noStroke();
+				rect(keyboardPos[i][0],keyboardPos[i][1],keySize,80,10);
+				textSize(20);
+				fill(0);
+				text(keyWords[i],keyboardPos[i][0]+keySize/2-5+keywordMove[i],keyboardPos[i][1]+50);
+			}
+			else if(wordStatus[i]==1){
+				fill(106,170,100);
+				noStroke();
+				rect(keyboardPos[i][0],keyboardPos[i][1],keySize,80,10);
+				textSize(20);
+				fill(255);
+				text(keyWords[i],keyboardPos[i][0]+keySize/2-5+keywordMove[i],keyboardPos[i][1]+50);
+			}
+			else if(wordStatus[i]==2){
+				fill(201,180,88);
+				noStroke();
+				rect(keyboardPos[i][0],keyboardPos[i][1],keySize,80,10);
+				textSize(20);
+				fill(255);
+				text(keyWords[i],keyboardPos[i][0]+keySize/2-5+keywordMove[i],keyboardPos[i][1]+50);
+			}
+			else{
+				fill(120,124,126);
+				noStroke();
+				rect(keyboardPos[i][0],keyboardPos[i][1],keySize,80,10);
+				textSize(20);
+				fill(255);
+				text(keyWords[i],keyboardPos[i][0]+keySize/2-5+keywordMove[i],keyboardPos[i][1]+50);
+			}
+    }
+		if (i==26 || i==27){
+			fill(210);
+			rect(keyboardPos[i][0],keyboardPos[i][1],keySize*3/2,80,10);
+		}
+    
+	}
+	fill(0);
+	text("ENTER",keyboardPos[26][0]+10,keyboardPos[26][1]+50);
+	image(deleted,keyboardPos[27][0]+20,keyboardPos[27][1]+30,keySize-15,25);
+}
+
+void inputKey(){
+	timer+=1;
+	for(int i=0;i<26;i++){
+		if(mouseX>=keyboardPos[i][0] && mouseX<=keyboardPos[i][0]+keySize && mouseY>=keyboardPos[i][1] && mouseY<=keyboardPos[i][1]+80 && timer>15 && mousePressed){
+			for(int q=0;q<30;q++){
+				if(squareWords[q][0]==-1 && status[int(q/5)]==1){
+					squareWords[q][0] = i;
+					break;
+				}
+			}
+			timer=0;
+		}
+	}
+	enterkey();
+	if(mouseX>=keyboardPos[27][0] && mouseX<=keyboardPos[27][0]+keySize*3/2 && mouseY>=keyboardPos[27][1] && mouseY<=keyboardPos[27][1]+80 && timer>15 && mousePressed){
+		for(int i=29;i>=0;i--){
+			if(status[int(i/5)]==1 && squareWords[i][0]!=-1){
+				squareWords[i][0] = -1;
+				break;
+			}
+		}
+		timer=0;
+	}
+}
+
+void notEnoughShake(){
+	if(notEnoughTimer<45){
+		fill(0);
+		rect(width/2-450+320,120,260,60,20);
+		fill(255);
+		textSize(22);
+		text("Not enough letters",width/2-450+362,158);
+	}
+	shake(shakeLetter);
+	notEnoughTimer += 1;
+	if(notEnoughTimer==45){
+		shakeLetter = -1;
+	}
+}
+
+void enterkey(){
+	if(mouseX>=keyboardPos[26][0] && mouseX<=keyboardPos[26][0]+keySize*3/2 && mouseY>=keyboardPos[26][1] && mouseY<=keyboardPos[26][1]+80 && timer>25 && mousePressed){
+		for(int i=0;i<6;i++){
+			if(status[i]==1){
+				if(squareWords[i*5+4][0]!=-1 && inDict(i)==0){
+					shakeLetter = i;
+					resetShake = 0;
+					notInDictTimer = 0;
+				}
+				else if(squareWords[i*5+4][0]!=-1){
+					status[i] = 2;
+					flipTimer = {0,0,0,0,0};
+					flipBack = {0,0,0,0,0};
+					enterTimer = 0;
+					if(i!=5){
+						status[i+1] = 1;
+					}
+					for(int q=i*5;q<i*5+5;q++){
+						guessAnswer[q-5*i] = keywordSmall[squareWords[q][0]];
+					}
+					for(int q=0;q<5;q++){
+						tempRealAnswer[q] = words[answer][q];
+					}
+					for(int q=0;q<5;q++){
+						if(guessAnswer[q]==tempRealAnswer[q]){
+							squareWords[i*5+q][1] = 1;
+							guessAnswer[q] = "0";
+							tempRealAnswer[q] = "0";
+						}
+					}
+					for(int q=0;q<5;q++){
+						if(guessAnswer[q]!="0"){
+							for(int r=0;r<5;r++){
+								if(guessAnswer[q]==tempRealAnswer[r]){
+									squareWords[i*5+q][1] = 2;
+									guessAnswer[q] = "0";
+									tempRealAnswer[r] = "0";
+									break;
+								}
+							}
+						}
+					}
+					for(int q=0;q<5;q++){
+						if(squareWords[i*5+q][1]==0){
+							squareWords[i*5+q][1] = 3;
+						}
+					}
+					break;
+				}
+				else{
+					shakeLetter=i;
+					resetShake = 0;
+					notEnoughTimer = 0;
+				}
+			}	
+		}
+		timer=0;
+	}
+}
+
+int inDict(int i){
+	int isAnswer = 0;
+	char[] tmpAns = new char[5];
+	for(int q=i*5;q<i*5+5;q++){
+		tmpAns[q-i*5] = keywordSmall[squareWords[q][0]];
+	}
+	for(int q=0;q<words.length;q++){
+		if(tmpAns[0]==words[q][0] && tmpAns[1]==words[q][1] && tmpAns[2]==words[q][2] && tmpAns[3]==words[q][3] && tmpAns[4]==words[q][4]){
+			isAnswer = 1;
+			break;
+		}
+	}
+	return isAnswer;
+}
+
+void shake(int row){
+	if(row!=-1){
+		if(resetShake==0){
+			for(int i=0;i<5;i++){
+				middlex[i] = squaresPos[row*5+i][0];
+				speed[i] = 2;
+
+			}
+			resetShake=1;
+		}
+		for (int i=0;i<5;i++){
+			squaresPos[row*5+i][0] += speed[i];
+			if(abs(squaresPos[5*row+i][0] - middlex[i]) > abs(speed[i])*3){
+				squaresPos[row*5+i][0] -= speed[i];
+				speed[i] = speed[i]*(-1);
+				if(speed[i]<0.4 && speed[i]>0){
+					speed[i] = 0;
+					squaresPos[5*row+i][0] = middlex[i];
+				}
+				else if(speed[i]>0){
+					speed[i] -= 0.3;
+				}
+				else if(speed[i]<0 && speed[i]>-0.4){
+					speed[i] = 0;
+					squaresPos[5*row+i][0] = middlex[i];
+				}
+				else if(speed[i]<0){
+					speed[i]+=0.3;
+				}
+			}
+		}
+	}
+}
