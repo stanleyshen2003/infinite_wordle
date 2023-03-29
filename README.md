@@ -4,7 +4,8 @@ This is a wordle game without the limitation.
 
 GUI at [Openprocessing](https://openprocessing.org/sketch/1460654)
 
-![image](https://user-images.githubusercontent.com/80504001/228615485-54ff40bf-ce62-4c76-943e-9855390ab222.png)
+![image](https://user-images.githubusercontent.com/80504001/228615739-12ba8100-1d01-499b-a3b4-47b87a9f5fb9.png)
+
 
 
 # Feature
