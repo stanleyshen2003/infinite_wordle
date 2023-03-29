@@ -15,7 +15,8 @@ GUI at [Openprocessing](https://openprocessing.org/sketch/1460654)
 
 # Refernce
 GUI : [wordle](https://www.nytimes.com/games/wordle/index.html)
- / word dictionary : [blog]("https://douze.pixnet.net/blog/post/398218087")
+
+word dictionary : [blog]("https://douze.pixnet.net/blog/post/398218087")
 
 # Other
  - The dictionary I web-crawled might not be big enough, so it might miss some of the words! I'll web-crawl a bigger dictionary if I have time!
