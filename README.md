@@ -3,7 +3,9 @@ The original wordle game can only play once per day.
 This is a wordle game without the limitation. 
 
 GUI at [Openprocessing](https://openprocessing.org/sketch/1460654)
-![image](https://user-images.githubusercontent.com/80504001/228615089-a7d2226e-83ba-499e-8cda-20bf65ee6616.png)
+
+![image](https://user-images.githubusercontent.com/80504001/228615485-54ff40bf-ce62-4c76-943e-9855390ab222.png)
+
 
 # Feature
 - change keyboard color after a guess
